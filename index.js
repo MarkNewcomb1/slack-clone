@@ -71,7 +71,7 @@
 			res.send("error");
 			return;
 		}
-		messages.push(req.session.username, req.body.newMessage);
+		messages.push(req.session.username + ": +" + req.body.newMessage);
 		res.send("success");
 	});
 	
