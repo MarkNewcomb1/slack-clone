@@ -14,6 +14,9 @@
 	
 	var app = express();
 	
+    var mongoose = require("mongoose");
+    
+    mongoose.connect("mongodb://localhost");
 	
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({extended: true}));
@@ -24,7 +27,12 @@
     	saveUninitialized: true
 	}));
 	
-	var messages = ["This is a message", "This is another message"];
+    var Message = mongoose.model("Message", {
+        text: String,
+        username: String
+    });
+    
+	//var messages = ["This is a message", "This is another message"];
 	var users = [];
     var testUser = [{
         username: "mark",
